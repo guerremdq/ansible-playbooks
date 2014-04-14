@@ -14,6 +14,9 @@
     with_items:
        - sudo
        - screen
+       - tmux
+       - logrotate
+       - rsyslog
        - iotop 
        - iptraf 
        - vim
@@ -36,7 +39,7 @@
        - linuxlogo
 
   - name: create user guerre
-    user: name=guerre uid=1000 shell=/bin/bash groups=adm
+    user: name=guerre uid=1000 shell=/bin/bash groups=adm,sudo
 
   - name: add user guerre ssh-key
     authorized_key: user=guerre key="{{lookup('file', '~/.ssh/id_dsa.pub') }}" manage_dir=yes #" 
